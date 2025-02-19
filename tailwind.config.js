@@ -17,7 +17,7 @@ module.exports = {
         lg: "1025px",
       },
       fontFamily: {
-        sans: ["Hiragino Kaku Gothic Pro", "sans-serif"],
+        sans: ["Hiragino Sans"],
       },
       fontSize: {
         "title-1": ["30px", "auto"],
@@ -33,13 +33,11 @@ module.exports = {
           "linear-gradient(169.34deg, #F8B133 3.15%, #E5332A 111.43%)",
         "primary-gradient":
           "linear-gradient(169.34deg, #F8B133 3.15%, #E5332A 111.43%)",
-        "custom-gradient-banner":
-          "linear-gradient(140.27deg, rgba(7, 125, 193, 0.2) 22.64%, rgba(2, 37, 124, 0.2) 62.68%)",
         "blue-sky-gradient": "linear-gradient(90deg, #0465BF 0%, #0ED7FF 100%)",
       },
       colors: {
-        primary: "#0671D5",
-        pink: "#E3287F",
+        primary: "#0068B5",
+        orange: "#F7703C",
         button: "#0958A2",
         "primary-text": "#07103F",
         "black-text": "#333333",
@@ -51,12 +49,6 @@ module.exports = {
       },
 
       boxShadow: {
-        "job-card-btn-section":
-          "0px -1px 2px 0px #0000001A, 0px -3px 3px 0px #00000017, 0px -7px 4px 0px #0000000D, 0px -13px 5px 0px #00000003, 0px -21px 6px 0px #00000000",
-        recommendJob: "4px 4px 4px 0px #00000014",
-
-        blogCardShadow:
-          "1px 4px 9px 0px #7297AC1A, 4px 17px 17px 0px #7297AC17,  8px 38px 23px 0px #7297AC0D, 23px 105px 30px 0px #7297AC00",
         successCardShadow:
           "0px 7px 15px 0px #0000001A, 0px 26px 26px 0px #00000017, 0px 59px 36px 0px #0000000D, 0px 106px 42px 0px #00000003, 0px 165px 46px 0px #00000000;",
       },
