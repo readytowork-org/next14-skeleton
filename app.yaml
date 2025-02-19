@@ -1,0 +1,9 @@
+env: standard
+runtime: nodejs20
+service: consumer
+handlers:
+  - url: /.*
+    secure: always
+    script: auto
+automatic_scaling:
+  max_idle_instances: 1

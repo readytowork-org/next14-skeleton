@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/**/*.tsx",
+    "next-env.d.ts",
+    "**/*.svg",
+    ".next/types/**/*.ts",
+    "dist/types/**/*.ts",
+    "custom.d.ts",
+    "src/components/template/JobSearch",
+    "public",
+    "src/components/template/JobDetail/components"
+  ],
+  "exclude": ["node_modules"]
+}
