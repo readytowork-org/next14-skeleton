@@ -33,9 +33,7 @@
     ".next/types/**/*.ts",
     "dist/types/**/*.ts",
     "custom.d.ts",
-    "src/components/template/JobSearch",
-    "public",
-    "src/components/template/JobDetail/components"
+    "public"
   ],
   "exclude": ["node_modules"]
 }
