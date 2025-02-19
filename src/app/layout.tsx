@@ -1,21 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import { HIRAGINO_SANS } from "@/src/fonts";
 import { NotificationProvider } from "../utils/hook/Notification";
-import "./(all)/globals.css";
+import "./global.css";
 import QueryClientProviders from "../components/organisms/QueryClientProviders";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
-import {
-  BackToTop,
-  GlobalTagManager,
-  LanguageSwitcher,
-  ProgressBarProvider,
-  ThemeProviderWrapper,
-} from "@/src/components";
+import { ThemeProviderWrapper } from "@/src/components";
+import { BackToTop, GlobalTagManager } from "../components/atoms";
+import { ProgressBarProvider } from "../components/atoms/ProgressBarProvider";
+import { LanguageSwitcher } from "../components/atoms/LanguageSwitch";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata.global");
-
   const imageUrl = process.env.NEXT_PUBLIC_BASEURL + "/assets/default-og.png";
 
   const isProduction =
@@ -78,7 +74,7 @@ export default async function RootLayout({
       </head>
       <body className={`${HIRAGINO_SANS.variable}`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
-
+          <ProgressBarProvider>
             <NotificationProvider>
               <ThemeProviderWrapper>
                 <BackToTop />

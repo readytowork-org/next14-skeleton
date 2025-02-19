@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --max-display-width: 1440px;
+}
+@layer utilities {
+  .debug {
+    outline: 1px solid red;
+  }
+
+  .limit-width {
+    max-width: var(--max-display-width);
+    margin: 0 auto;
+  }
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+  border-image-source: linear-gradient(
+    169.34deg,
+    #f8b133 3.15%,
+    #e5332a 111.43%
+  );
+}
+
+.gradient-underlined-text {
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, #f8b133 0%, #e5332a 100%);
+  border-image-slice: 1;
+}
+
+.job-card-shadow {
+  box-shadow: 4px 4px 4px 0px #00000014;
+}
+
+.gradient-text {
+  @apply bg-clip-text;
+  @apply text-transparent;
+  @apply bg-primary-gradient;
+}
+
+.gradient-underline {
+  @apply relative;
+}
+
+.gradient-underline::after {
+  content: "";
+  @apply absolute left-0 bottom-[2px] w-full h-[1px] bg-primary-gradient;
+}
+
+:root {
+  --font-hiragino-tw: "Hiragino Kaku Gothic Pros", sans-serif;
+}
+
+.slick-dots {
+  li {
+    margin: 0 !important;
+    height: 10px !important;
+    width: 10px !important;
+  }
+}
+
+.css-cokf1l-MuiListItemIcon-root {
+  min-width: 26px !important;
+}
+
+.slick-slider .slick-list .slick-track {
+  display: flex;
+}
+
+.slick-track {
+  display: flex;
+  align-items: stretch;
+}
+
+.slick-slide {
+  height: auto;
+  flex: 1;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}

@@ -29,11 +29,6 @@ export function NotFoundPage() {
             "flex flex-col items-center md:items-start pt-6 md:pt-0 gap-2 md:gap-[12px]"
           }
         >
-          {/* <span
-            className={"text-primary font-[800] text-[36px] md:text-[46px]"}
-          >
-            {t("OOPS!!")}
-          </span> */}
           <span className={"font-semibold text-[24px]  sm:text-[28px]"}>
             {t("404 PAGE NOT FOUND")}
           </span>
