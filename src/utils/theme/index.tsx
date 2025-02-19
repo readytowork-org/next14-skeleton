@@ -1,6 +1,5 @@
 "use client";
 import { HIRAGINO_SANS } from "@/src/fonts";
-import ChevronSmallDown from "@/icons/chevronsmalldown.svg";
 import { createTheme } from "@mui/material/styles";
 import React from "react";
 import Image from "next/image";
@@ -236,9 +235,7 @@ export const APP_THEME = createTheme({
       },
     },
     MuiSelect: {
-      defaultProps: {
-        IconComponent: (iconProps) => <ChevronSmallDown {...iconProps} />,
-      },
+      defaultProps: {},
       styleOverrides: {
         root: {
           padding: "unset",
