@@ -1,5 +1,5 @@
+import React from "react";
 import type { Viewport } from "next";
-import { HIRAGINO_SANS } from "@/src/fonts";
 import "./global.css";
 import QueryClientProviders from "../components/organisms/QueryClientProviders";
 import { NextIntlClientProvider } from "next-intl";
@@ -24,7 +24,7 @@ export default async function RootLayout({
 
   return (
     <html lang={"en"}>
-      <body className={`${HIRAGINO_SANS.variable}`}>
+      <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ProgressBarProvider>
             <BackToTop />

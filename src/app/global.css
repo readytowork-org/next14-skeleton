@@ -5,6 +5,12 @@
 :root {
   --max-display-width: 1440px;
 }
+
+body {
+  background: #eaf4fa;
+  font-family: Hiragino Sans;
+}
+
 @layer utilities {
   .debug {
     outline: 1px solid red;
