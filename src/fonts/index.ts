@@ -8,6 +8,6 @@ const font = localFont({
 export const HIRAGINO_SANS = {
   ...font,
   style: {
-    fontFamily: '"Hiragino Kaku Gothic Pros", sans-serif',
+    fontFamily: '"Hiragino Sans"',
   },
 };
