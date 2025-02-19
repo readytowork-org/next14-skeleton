@@ -1,11 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { HIRAGINO_SANS } from "@/src/fonts";
-import { NotificationProvider } from "../utils/hook/Notification";
 import "./global.css";
 import QueryClientProviders from "../components/organisms/QueryClientProviders";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
-import { ThemeProviderWrapper } from "@/src/components";
 import { BackToTop, GlobalTagManager } from "../components/atoms";
 import { ProgressBarProvider } from "../components/atoms/ProgressBarProvider";
 import { LanguageSwitcher } from "../components/atoms/LanguageSwitch";
@@ -75,14 +73,10 @@ export default async function RootLayout({
       <body className={`${HIRAGINO_SANS.variable}`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ProgressBarProvider>
-            <NotificationProvider>
-              <ThemeProviderWrapper>
-                <BackToTop />
-                <QueryClientProviders>
-                  <main>{children}</main>
-                </QueryClientProviders>
-              </ThemeProviderWrapper>
-            </NotificationProvider>
+            <BackToTop />
+            <QueryClientProviders>
+              <main>{children}</main>
+            </QueryClientProviders>
             {process.env.NEXT_PUBLIC_ENVIRONMENT == "development" && (
               <LanguageSwitcher />
             )}
