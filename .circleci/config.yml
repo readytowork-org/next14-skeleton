@@ -245,7 +245,8 @@ workflows:
   build-workflow:
     jobs:
       - build:
-          context: minnano_driver_dev
+          context:
+            - rtw_basic
           filters:
             branches:
               only:
@@ -253,7 +254,8 @@ workflows:
                 - circleci
 
       - build_and_deploy_to_develop:
-          context: minnano_driver_dev
+          context:
+            - rtw_basic
           filters:
             branches:
               only:
@@ -261,7 +263,8 @@ workflows:
                 - circleci
 
       - build_and_deploy_to_production:
-          context: minnano_driver
+          context:
+            - rtw_basic
           filters:
             tags:
               only:
