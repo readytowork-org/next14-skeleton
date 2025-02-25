@@ -1,7 +1,9 @@
 version: 2.1
 
 orbs:
-  slack: circleci/slack@3.4.2
+  slack: circleci/slack@5.1.1
+  jira: circleci/jira@2.2.0
+  jq: circleci/jq@3.0.2
   # for secondary image dependencies to google cloud sdk
   node: circleci/node@7.0.0
 
@@ -42,13 +44,10 @@ jobs:
             unset CI
             yarn build
 
-      - slack/status:
-          channel: ${SLACK_CHANNEL}
-          webhook: ${SLACK_WEBHOOK}
-          failure_message: ":red_circle: A $CIRCLE_JOB job has failed!"
-
-      - slack/notify-on-failure:
-          only_for_branches: develop
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+          branch_pattern: 'develop'
 
   # build and deploy to development
   build_and_deploy_to_develop:
@@ -94,10 +93,7 @@ jobs:
             NEXT_PUBLIC_FIREBASE_APP_ID=$NEXT_PUBLIC_FIREBASE_APP_ID
             NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=$NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
             NEXT_PUBLIC_APP_API_URL=$NEXT_PUBLIC_APP_API_URL
-            NEXT_PUBLIC_CMS_URL=$NEXT_PUBLIC_CMS_URL
-            NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT
-            NEXT_PUBLIC_BASEURL=$NEXT_PUBLIC_BASEURL
-            CONSUMER_HOST=$CONSUMER_HOST" > .env
+            NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT" > .env
 
       - run:
           name: Authenticating and configuring the Google Cloud Platform
@@ -130,13 +126,22 @@ jobs:
                 --quiet
             done
 
-      - slack/status:
-          channel: ${SLACK_CHANNEL}
-          webhook: ${SLACK_WEBHOOK}
-          failure_message: ":red_circle: A $CIRCLE_JOB job has failed!"
+      - slack/notify:
+          event: pass
+          template: basic_success_1
 
-      - slack/notify-on-failure:
-          only_for_branches: develop
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+
+      - jq/install
+
+      - jira/notify:
+          environment: development
+          environment_type: development
+          job_type: deployment
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >>
 
     resource_class: medium
 
@@ -184,10 +189,7 @@ jobs:
             NEXT_PUBLIC_FIREBASE_APP_ID=$NEXT_PUBLIC_FIREBASE_APP_ID
             NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=$NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
             NEXT_PUBLIC_APP_API_URL=$NEXT_PUBLIC_APP_API_URL
-            NEXT_PUBLIC_CMS_URL=$NEXT_PUBLIC_CMS_URL
-            NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT
-            NEXT_PUBLIC_BASEURL=$NEXT_PUBLIC_BASEURL
-            CONSUMER_HOST=$CONSUMER_HOST" > .env
+            NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT" > .env
 
       - run:
           name: Authenticating and configuring the Google Cloud Platform
@@ -220,13 +222,22 @@ jobs:
                 --quiet
             done
 
-      - slack/status:
-          channel: ${SLACK_CHANNEL}
-          webhook: ${SLACK_WEBHOOK}
-          failure_message: ":red_circle: A $CIRCLE_JOB job has failed!"
+      - slack/notify:
+          event: pass
+          template: success_tagged_deploy_1
 
-      - slack/notify-on-failure:
-          only_for_branches: main
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+
+      - jq/install
+
+      - jira/notify:
+          environment: production
+          environment_type: production
+          job_type: deployment
+          pipeline_id: << pipeline.id >>
+          pipeline_number: << pipeline.number >>
 
     resource_class: medium
 
