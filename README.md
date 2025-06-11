@@ -1,9 +1,11 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+We are using MUI components and theme config to change its look and feel, 
 
-First, run the development server:
+Initial theme configs are available in https://github.com/readytowork-org/mui-theme-config as well as Some basic Reusable components are available, do check it out
 
+## Running The Project
 ```bash
 npm run dev
 # or
