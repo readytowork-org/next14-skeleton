@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import BackIcon from "@/icons/back-icon.svg";
-import IconButton from "@mui/material/IconButton";
 
 export const BackButton = (props: {
   href?: string;
   redirectionType?: "href" | "back";
+  Component: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement> & { component: "string" | React.ElementType }>;
 }) => {
   const router = useRouter();
 
@@ -21,19 +21,12 @@ export const BackButton = (props: {
   }, []);
 
   return (
-    <IconButton
+    <props.Component
       href={!canGoBack ? "/" : props.href}
-      component={
-        props.redirectionType == "href" || !canGoBack ? Link : IconButton
-      }
-      onClick={
-        props.redirectionType == "back" && canGoBack ? router.back : undefined
-      }
-      sx={{
-        position: "absolute",
-      }}
+      component={props.redirectionType == "href" || !canGoBack ? Link : props.Component}
+      onClick={props.redirectionType == "back" && canGoBack ? router.back : undefined}
     >
       <BackIcon />
-    </IconButton>
+    </props.Component>
   );
 };
