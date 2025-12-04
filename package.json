@@ -18,12 +18,12 @@
     "dotenv": "^17.2.3",
     "idb-keyval": "^6.2.2",
     "lodash": "^4.17.21",
-    "next": "16.0.6",
+    "next": "16.0.7",
     "next-intl": "^4.5.7",
     "next-nprogress-bar": "^2.4.3",
     "playwright": "^1.57.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
