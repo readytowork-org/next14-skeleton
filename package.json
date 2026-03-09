@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
-    "@tailwindcss/postcss": "^4.2.1",
     "@tanstack/react-query": "^5.90.11",
     "axios": "1.13.2",
     "clsx": "^2.1.1",
@@ -50,7 +49,6 @@
     "postcss": "^8.5.8",
     "prettier": "^3.7.3",
     "swagger-typescript-api": "^13.2.16",
-    "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3"
   }
 }
